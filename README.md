@@ -17,6 +17,9 @@ cd jpetstore-db
 docker build -t jpetstore-db .
 ```
 
+已经打包好了，放在了： registry.alauda.cn/alaudasa/docker-jpetstore-db
+
+
 ### 打包 App 镜像
 
 在工程目录下:
@@ -34,19 +37,19 @@ docker build -t jpetstore-app .
 docker run -d --name mysql -p 3306:3306 jpetstore-db
 ```
 
-已经打包好了，放在了： registry.alauda.cn/alaudasa/docker-jpetstore-db
 
 
 数据库运行起来之后，可以通过用户名/密码：root/root 来访问数据库，初始化的表和数据都存放在 jpetstore 数据库下面
 
 ### 运行 App
 ```
-docker run -it  --link db:db --rm  \
+docker run -d  \
     -e DB_HOST=db \
     -e DB_PORT=3306 \
     -e DB_USER=root \
     -e DB_PASSWORD=root  \
-    -p 8080:8080
+    -p 8080:8080 \
+    jpetstore-app
 ```
 
 有两种方式来设置需要连接的数据库的配置信息：
