@@ -24,11 +24,18 @@ docker build -t jpetstore-db .
 docker build -t jpetstore-app .
 ```
 
+已经打包好了 2 个镜像并且上传到 Hub, 分别是：
+*  registry.alauda.cn/alaudasa/docker-jpetstore-app:green
+*   registry.alauda.cn/alaudasa/docker-jpetstore-app:blue
+
 ### 运行数据库
 
 ```
 docker run -d --name mysql -p 3306:3306 jpetstore-db
 ```
+
+已经打包好了，放在了： registry.alauda.cn/alaudasa/docker-jpetstore-db
+
 
 数据库运行起来之后，可以通过用户名/密码：root/root 来访问数据库，初始化的表和数据都存放在 jpetstore 数据库下面
 
